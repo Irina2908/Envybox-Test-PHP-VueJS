@@ -1,0 +1,47 @@
+{
+  "name": "envybox-test-php-vuejs",
+  "version": "1.0.0",
+  "description": "Envybox - PHP+VueJS Task",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \\\"Error: no test specified\\\" && exit 1",
+    "gulp": "./node_modules/.bin/gulp"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-syntax-async-functions": "^6.13.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-runtime": "^6.26.0",
+    "browser-sync": "^2.16.0",
+    "css-loader": "^4.2.2",
+    "gulp": "^3.9.1",
+    "gulp-changed": "^3.2.0",
+    "gulp-concat-sourcemap": "^1.3.1",
+    "gulp-plumber": "^1.2.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^1.12.1",
+    "gulp-watch": "^5.0.1",
+    "sass-loader": "^7.1.0",
+    "uuid": "^3.0.1",
+    "uuid4": "^1.1.4",
+    "vinyl-named": "^1.1.0",
+    "vue": "^2.6.10",
+    "vue-loader": "^15.7.0",
+    "vue-template-compiler": "^2.6.10",
+    "vuex": "^3.1.0",
+    "webpack": "^4.32.2",
+    "webpack-cli": "^3.3.0",
+    "webpack-stream": "^5.2.1"
+  },
+  "author": "Irina Zhunusova | iris118.25@mail.ru",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "https://irina2908@bitbucket.org/irina2908/envybox-test-php-vuejs.git"
+  }
+}
