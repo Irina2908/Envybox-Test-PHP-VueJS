@@ -21,7 +21,7 @@ var path = {
             plugins: "public/plugins/"
     }
 };
-var appConfigProd = require('/src/app/webpack.config.prod.js');
+var appConfigProd = require('./src/app/webpack.config.prod.js');
 
 gulp.task('assets:prod', () => {
     // copy assets (except styles)
