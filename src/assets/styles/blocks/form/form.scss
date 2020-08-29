@@ -1,0 +1,24 @@
+$b: "form";
+.#{$b} {
+    border: 2px solid #858585;
+    border-radius: 10px;
+
+    &__container {
+        padding: 20px;
+    }
+    &__field {
+        display: flex;
+        &-name {
+            width: 35%;
+        }
+        &-input {
+            width: 65%;
+        }
+    }
+}
+
+.#{$b} {
+    &__field + &__field {
+        margin-top: 13px;
+    }
+}

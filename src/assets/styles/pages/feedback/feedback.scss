@@ -1,0 +1,9 @@
+.feedback {
+    &__content {
+        display: flex;
+    }
+    &__form {
+        width: 400px;
+        margin: auto;
+    }
+}

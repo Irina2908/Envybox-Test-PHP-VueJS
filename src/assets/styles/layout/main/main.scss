@@ -1,0 +1,9 @@
+$b: "main";
+.#{$b} {
+    display: flex;
+    flex-grow: 1;
+
+    &__content {
+        width: 100%;
+    }
+}
