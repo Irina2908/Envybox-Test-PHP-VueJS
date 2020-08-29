@@ -13,6 +13,9 @@ $b: "form";
         }
         &-input {
             width: 65%;
+            &_resize_y {
+                resize: vertical;
+            }
         }
     }
 }

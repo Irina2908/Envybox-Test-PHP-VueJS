@@ -18,7 +18,7 @@ export default {
                 </div>
                 <div class="form__field">
                     <span class="form__field-name">Сообщение:</span>
-                    <textarea class="form__field-input form__field-input_textarea"></textarea>
+                    <textarea class="form__field-input form__field-input_textarea form__field-input_resize_y"></textarea>
                 </div>
             </div>
         </div>
