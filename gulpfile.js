@@ -57,6 +57,11 @@ gulp.task("styles:prod", function () {
         .pipe(reload({stream: true}));
 });
 
+gulp.task("markup:prod", [
+	"styles:prod",
+	"app:prod"
+]);
+
 gulp.task("prod", [
 	"styles:prod",
 	"app:prod",
