@@ -18,6 +18,26 @@ $b: "form";
             }
         }
     }
+    &__bottom {
+        display: flex;
+        margin-top: 30px;
+
+        &-center {
+            margin: 0 auto;
+        }
+    }
+    &__submit-btn {
+        width: 130px;
+        background-color: #C2C2C2;
+        border-radius: 15px;
+        border: 2px solid #080808;
+        padding: 7px 15px 8px;
+        font-weight: 700;
+        cursor: pointer;
+        &:hover {
+            opacity: 0.75;
+        }
+    }
 }
 
 .#{$b} {
