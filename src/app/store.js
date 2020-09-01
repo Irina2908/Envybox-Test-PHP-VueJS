@@ -15,7 +15,7 @@ export default new Vuex.Store({
     },
     getters: {
         getFields(state, getters) {
-            return _=> state.data
+            return () => state.data
         },
         getField(state, getters) {
             return (name) => {
