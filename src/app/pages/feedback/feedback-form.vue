@@ -56,15 +56,44 @@ export default {
         ...mapActions([
             'setField',
         ]),
-        send(e) {
+        async send(e) {
             e.preventDefault();
+
+            let data = new FormData();
+
+            data.append('feedback', JSON.stringify(this.getFields()));
+
+            let options = {
+                method: 'post',
+                credentials: 'include',
+                body: data,
+                cache: 'reload'
+            }
+
+            let res = undefined;
+
+            try {
+                res = await fetch('/feedback/send', options);
+
+                if (res.status !== 200) {
+                    alert("Error " + res.status + ": Error sending message");
+                } else {
+                        let json = await res.json();
+                        if (json.data)
+                            alert("Message was sent successfully");
+                        else
+                            alert("Error sending message");
+                }
+            } catch (error) {
+                alert("Error sending message: " + error);
+            }
         }
     }
 }
 </script>
 
 <template>
-    <form class="form" @submit="send" name="feedbackForm" method="post" action="">
+    <form class="form" @submit="send" name="feedbackForm" method="post" action="/feedback/send">
         <div class="form__container">
             <div class="form__content">
                 <div class="form__field">
