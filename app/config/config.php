@@ -18,9 +18,10 @@ return new \Phalcon\Config(array(
     ),
     'application' => array(
         'baseUri' => '/',
+        'root' => __DIR__ . '/../',
         'controllersDir' => __DIR__ . '/../../app/controllers/',
         'modelsDir' =>      __DIR__ . '/../../app/models/',
         'viewsDir' =>       __DIR__ . '/../../app/views/',
-        'servicesDir' =>    __DIR__ . '/../../app/services/',
+        'modulesDir' =>      __DIR__ . '/../../app/modules/',
     )
 ));

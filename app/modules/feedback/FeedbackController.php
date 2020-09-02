@@ -1,14 +1,29 @@
 <?php
 
 
-namespace Controllers;
+namespace Modules\Feedback;
 
 use Phalcon\Mvc\Controller;
+use Phalcon\Mvc\Router\Group as RouterGroup;
 use Phalcon\Filter;
 
 
 class FeedbackController extends Controller
 {
+    public function getRoutes()
+    {
+        $routes = new RouterGroup(array(
+            'namespace' => 'Modules\Feedback',
+            'controller' => 'Feedback'
+        ));
+
+        $routes->add(
+            '/feedback/:action', [ 'action' => 1 ]
+        );
+
+        return $routes;
+    }
+
     public function sendAction()
     {
         // getting $_POST data

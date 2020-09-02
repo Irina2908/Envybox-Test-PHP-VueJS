@@ -3,6 +3,7 @@
 use Phalcon\Mvc\View;
 use Phalcon\Di\FactoryDefault;
 use Phalcon\Mvc\Url;
+use Phalcon\Mvc\Router;
 use Phalcon\Db\Adapter\Pdo\Factory as DbFactory;
 
 //DI
@@ -45,24 +46,30 @@ $di->setShared(
 );
 
 // Setup Router
-$di->set(
+$di->setShared(
     'router', 
     function() {
         $router = new \Phalcon\Mvc\Router(false);
-    
+
         $router->removeExtraSlashes(true);
-    
+
         $router->add('/', array(
             'namespace' => 'Controllers',
             'controller' => "Index"
         ));
-    
+
+        $router->add('/:action', array(
+            'namespace' => 'Controllers',
+            'controller' => 'Index',
+            'action' => 1
+        ));
+
         $router->add('/:controller/:action', array(
             'namespace' => 'Controllers',
             'controller' => 1,
             'action' => 2
         ));
-    
+
         return $router;
     }
 );
