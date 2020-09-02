@@ -1,4 +1,6 @@
 /.idea
 /node_modules
 /src/app/package-lock.json
+/output/*
+!/output/.gitkeep
 package-lock.json

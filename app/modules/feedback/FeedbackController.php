@@ -3,6 +3,8 @@
 
 namespace Modules\Feedback;
 
+use Modules\Feedback\Models;
+
 use Phalcon\Mvc\Controller;
 use Phalcon\Mvc\Router\Group as RouterGroup;
 use Phalcon\Filter;
@@ -50,6 +52,13 @@ class FeedbackController extends Controller
         $phone = $filter->sanitize($feedback->phone, 'phone');// validating $_POST data with custom 'phone' filter
         $messageText = $filter->sanitize($feedback->message, 'text');
 
-        echo json_encode(['data' => true]);
+        $message = new Models\Message();
+        $message->name = $name;
+        $message->phone = $phone;
+        $message->text = $messageText;
+
+        $result = $message->saveIn('file');
+
+        echo json_encode(['data' => $result]);
     }
 }
