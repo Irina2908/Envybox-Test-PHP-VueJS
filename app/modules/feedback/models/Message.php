@@ -10,6 +10,7 @@ use Models\ModelBase;
 
 class Message extends ModelBase
 {
+    public $id;
     public $name;
     public $phone;
     public $text;

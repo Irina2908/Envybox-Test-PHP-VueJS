@@ -78,11 +78,18 @@ export default {
                 if (res.status !== 200) {
                     alert("Error " + res.status + ": Error sending message");
                 } else {
-                        let json = await res.json();
-                        if (json.data)
+                    let json = await res.json();
+                    if (json.data) {
+                        let result = json.data;
+                        if (!result.error)
                             alert("Message was sent successfully");
-                        else
-                            alert("Error sending message");
+                        else {
+                            if (Array.isArray(result.error))
+                                alert(result.error.join('<br/>'));
+                            else alert (result.error);
+                        }
+                    } else
+                        alert("Error sending message");
                 }
             } catch (error) {
                 alert("Error sending message: " + error);

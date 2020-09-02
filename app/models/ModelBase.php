@@ -23,4 +23,8 @@ class ModelBase extends Model
 
         return file_put_contents($this->FILE_DIR . 'output.txt', $this, FILE_APPEND);
     }
+
+    public function saveInDb() {
+        return $this->save();
+    }
 }

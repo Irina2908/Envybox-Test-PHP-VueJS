@@ -12,6 +12,8 @@ use Phalcon\Filter;
 
 class FeedbackController extends Controller
 {
+    private $response = ['data' => null, 'error' => null];
+
     public function getRoutes()
     {
         $routes = new RouterGroup(array(
@@ -57,8 +59,25 @@ class FeedbackController extends Controller
         $message->phone = $phone;
         $message->text = $messageText;
 
-        $result = $message->saveIn('file');
+        $resp = array_slice($this->response, 0);
+        $resp['data'] = [];
 
-        echo json_encode(['data' => $result]);
+        $resp['data']['file'] = $message->saveIn('file');
+        $resp['data']['db_default'] = $message->saveIn('db');
+
+        if (!$resp['data']['file'] || $messages = $message->getMessages()) {
+            $resp['error'] = [];
+
+            $errors = array_reduce($messages, function($carry, $message) {
+                $carry[] = $message->getMessage();
+                return $carry;
+            }, []);
+            $resp['error'] = $errors;
+
+            if (!$resp['data']['file'])
+                $resp['error'][] = 'Error saving in file';
+        }
+
+        echo json_encode($resp);
     }
 }
