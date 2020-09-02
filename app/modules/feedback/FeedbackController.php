@@ -3,6 +3,7 @@
 
 namespace Modules\Feedback;
 
+use Controllers\ControllerBase;
 use Modules\Feedback\Models;
 
 use Phalcon\Mvc\Controller;
@@ -10,10 +11,8 @@ use Phalcon\Mvc\Router\Group as RouterGroup;
 use Phalcon\Filter;
 
 
-class FeedbackController extends Controller
+class FeedbackController extends ControllerBase
 {
-    private $response = ['data' => null, 'error' => null];
-
     public function getRoutes()
     {
         $routes = new RouterGroup(array(
@@ -59,25 +58,24 @@ class FeedbackController extends Controller
         $message->phone = $phone;
         $message->text = $messageText;
 
-        $resp = array_slice($this->response, 0);
-        $resp['data'] = [];
+        $this->response['data'] = [];
 
-        $resp['data']['file'] = $message->saveIn('file');
-        $resp['data']['db_default'] = $message->saveIn('db');
+        $this->response['data']['file'] = $message->saveIn('file');
+        $this->response['data']['db_default'] = $message->saveIn('db');
 
-        if (!$resp['data']['file'] || $messages = $message->getMessages()) {
-            $resp['error'] = [];
+        if (!$this->response['data']['file'] || $messages = $message->getMessages()) {
+            $this->response['error'] = [];
 
             $errors = array_reduce($messages, function($carry, $message) {
                 $carry[] = $message->getMessage();
                 return $carry;
             }, []);
-            $resp['error'] = $errors;
+            $this->response['error'] = $errors;
 
-            if (!$resp['data']['file'])
-                $resp['error'][] = 'Error saving in file';
+            if (!$this->response['data']['file'])
+                $this->response['error'][] = 'Error saving in file';
         }
 
-        echo json_encode($resp);
+        $this->json();
     }
 }
